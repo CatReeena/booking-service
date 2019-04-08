@@ -1,4 +1,4 @@
-package com.shera.storing;
+package com.shera.booking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +8,7 @@ public class StoringApplication {
 
     public static void main(String[] args) {
             SpringApplication.run(StoringApplication.class, args);
-        }
+    }
 }
 
 

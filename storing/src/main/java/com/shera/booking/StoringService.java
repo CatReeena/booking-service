@@ -1,10 +1,9 @@
-package com.shera.storing;
+package com.shera.booking;
 
-import com.shera.booking.BookingRequest;
-import com.shera.storing.dao.BookingDAO;
-import com.shera.storing.dao.SeatDAO;
-import com.shera.storing.entity.Booking;
-import com.shera.storing.entity.Seat;
+import com.shera.booking.dao.BookingDAO;
+import com.shera.booking.dao.SeatDAO;
+import com.shera.booking.entity.Booking;
+import com.shera.booking.entity.Seat;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class StoringService {
         Seat seat = seatDAO.findById(bookingRequest.getSeat()).orElse(null);
         if(seat != null) {
             if (bookingDAO.findFirstBySeatId(seat.getId()) == null) {
-                bookingDAO.save(new Booking(seat, bookingRequest.getPhoneNumber())); 
+                bookingDAO.save(new Booking(seat, bookingRequest.getPhoneNumber()));
             }
         }
     }

@@ -1,6 +1,6 @@
-package com.shera.storing.dao;
+package com.shera.booking.dao;
 
-import com.shera.storing.entity.Booking;
+import com.shera.booking.entity.Booking;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BookingDAO extends CrudRepository<Booking, Long> {

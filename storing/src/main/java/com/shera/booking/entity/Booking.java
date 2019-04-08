@@ -1,4 +1,4 @@
-package com.shera.storing.entity;
+package com.shera.booking.entity;
 
 import lombok.Getter;
 import lombok.Setter;

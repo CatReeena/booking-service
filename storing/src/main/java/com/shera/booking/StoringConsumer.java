@@ -1,13 +1,10 @@
-package com.shera.storing;
+package com.shera.booking;
 
-import com.shera.booking.BookingRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,7 +15,7 @@ public class StoringConsumer {
     @Autowired
     public final StoringService storingService;
 
-    @KafkaListener(topics = "queue")
+   // @KafkaListener(topics = "queue")
     public void receiveFirstTopic(ConsumerRecord<String, BookingRequest> record) {
         log.info("[Topic {}] | Received message: key - {}, value - {}", record.topic(), record.key(), record.value());
         BookingRequest bookingRequest = record.value();
