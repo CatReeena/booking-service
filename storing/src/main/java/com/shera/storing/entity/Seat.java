@@ -1,5 +1,6 @@
-package com.shera.storing;
+package com.shera.storing.entity;
 
+import com.shera.storing.entity.Booking;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,8 @@ public class Seat {
     private Booking booking;
 
     public Seat(){}
+
+//    public Seat(Long id){
+//        this.id = id;
+//    }
 }

@@ -1,4 +1,4 @@
-package com.shera.storing;
+package com.shera.storing.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +20,8 @@ public class Booking {
 
     public Booking(){}
 
+    public Booking(Seat seatId, Integer phoneNumber) {
+        this.seatId = seatId;
+        this.phoneNumber = phoneNumber;
+    }
 }
