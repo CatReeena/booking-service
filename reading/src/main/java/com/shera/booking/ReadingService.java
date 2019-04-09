@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Service
 @AllArgsConstructor
@@ -15,7 +15,7 @@ public class ReadingService {
     @Autowired
     public final SeatDAO seatDAO;
 
-    public Iterable<Seat> readBooking(){
-        return seatDAO.findAll();
+    public Iterable<Seat> readBooking(LocalDate eventDate){
+        return seatDAO.findAllByBooking_EventDate(eventDate);
     }
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Booking {
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     private Seat seatId;
     private Integer phoneNumber;
-    private Timestamp eventDate;
+    private LocalDate eventDate;
 
     public Booking(){}
 
