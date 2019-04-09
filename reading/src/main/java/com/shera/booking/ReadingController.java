@@ -21,13 +21,11 @@ public class ReadingController {
 
     @GetMapping("/status")
     public ResponseEntity<?> readSeatStatus(){
-        //return ResponseEntity.ok().body(readingService.readBooking().toString());
-        List<Seat> seats =  Lists.newArrayList(readingService.readBooking());
-        //return new ResponseEntity<Iterable<Seat>>(readingService.readBooking(), HttpStatus.OK);
         List<SeatDTO>  seatDTOlist = new ArrayList<>();
         readingService.readBooking()
-                .forEach(seatBooking -> seatDTOlist.add(new SeatDTO(seatBooking.getId(),
-                        seatBooking.getBooking().getPhoneNumber(),
+                .forEach(seatBooking -> seatDTOlist.add(new SeatDTO(
+                        seatBooking.getId(),
+                        seatBooking.getBooking()!= null ? seatBooking.getBooking().getPhoneNumber() : null,
                         seatBooking.getBooking()!= null)));
 
         return ResponseEntity.ok().body(seatDTOlist);
