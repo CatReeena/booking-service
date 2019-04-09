@@ -3,5 +3,11 @@ package com.shera.booking.dao;
 import com.shera.booking.entity.Seat;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
 public interface SeatDAO extends CrudRepository<Seat, Long>  {
+
+    public List<Seat> findByBooking_EventDate(Timestamp date);
 }

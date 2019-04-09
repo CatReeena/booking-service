@@ -5,6 +5,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -17,6 +19,7 @@ public class Booking {
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     private Seat seatId;
     private Integer phoneNumber;
+    private Timestamp eventDate;
 
     public Booking(){}
 
