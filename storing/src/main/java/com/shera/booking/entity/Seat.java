@@ -15,7 +15,7 @@ public class Seat {
     @GeneratedValue
     private Long id;
     @OneToOne(mappedBy = "seatId")
-    private Booking booking;
+    private Ticket ticket;
 
     public Seat(){}
 

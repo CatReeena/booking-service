@@ -12,19 +12,19 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Booking {
+public class Ticket {
     @Id
     @GeneratedValue
     private Long id;
     @OneToOne
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     private Seat seatId;
-    private Integer phoneNumber;
+    private Long phoneNumber;
     private LocalDate eventDate;
 
-    public Booking(){}
+    public Ticket(){}
 
-    public Booking(Seat seatId, Integer phoneNumber) {
+    public Ticket(Seat seatId, Long phoneNumber) {
         this.seatId = seatId;
         this.phoneNumber = phoneNumber;
     }

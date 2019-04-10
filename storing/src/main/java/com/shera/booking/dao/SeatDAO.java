@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface SeatDAO extends CrudRepository<Seat, Long>  {
 
-    public List<Seat> findAllByBooking_EventDate(LocalDate date);
+    public List<Seat> findAllByTicket_EventDate(LocalDate date);
 }

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Setter
 public class SeatDTO {
 
-    private Long id;
-    private Integer phoneNumber;
+    private Long seatId;
+    private Long phoneNumber;
     private Boolean taken;
 
 

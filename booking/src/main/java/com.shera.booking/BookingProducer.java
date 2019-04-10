@@ -2,7 +2,6 @@ package com.shera.booking;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,6 @@ public class BookingProducer {
         kafkaTemplate.send(topic, bookingRequest);
         log.info("[Topic {}] Message sent: {}", topic, MessageFormat.format("{}, {}",
                 bookingRequest.getPhoneNumber(),
-                bookingRequest.getSeat()));
+                bookingRequest.getSeatId()));
     }
 }

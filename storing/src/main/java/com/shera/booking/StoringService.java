@@ -1,9 +1,7 @@
 package com.shera.booking;
 
-import com.shera.booking.dao.BookingDAO;
-import com.shera.booking.dao.SeatDAO;
-import com.shera.booking.entity.Booking;
-import com.shera.booking.entity.Seat;
+import com.shera.booking.dao.TicketDAO;
+import com.shera.booking.entity.Ticket;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,18 +11,15 @@ import org.springframework.stereotype.Service;
 public class StoringService {
 
     @Autowired
-    public final BookingDAO bookingDAO;
-
-    @Autowired
-    public final SeatDAO seatDAO;
+    public final TicketDAO ticketDAO;
 
     public void storeBooking(BookingRequest bookingRequest){
 
-        Seat seat = seatDAO.findById(bookingRequest.getSeat()).orElse(null);
-        if(seat != null) {
-            if (bookingDAO.findFirstBySeatId(seat.getId()) == null) {
-                bookingDAO.save(new Booking(seat, bookingRequest.getPhoneNumber()));
-            }
+        Ticket ticket = ticketDAO.findFirstBySeatIdAndEventDate(bookingRequest.getSeatId(), bookingRequest.getEventDate());
+        if(ticket != null){
+            ticket.setPhoneNumber(bookingRequest.getPhoneNumber());
+            ticketDAO.save(ticket);
         }
     }
+
 }

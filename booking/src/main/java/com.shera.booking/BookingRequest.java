@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Getter @Setter
 public class BookingRequest {
-    private Integer phoneNumber;
-    private Long seat;
+    private Long phoneNumber;
+    private Long seatId;
     private LocalDate eventDate;
 }

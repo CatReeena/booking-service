@@ -16,6 +16,6 @@ public class ReadingService {
     public final SeatDAO seatDAO;
 
     public Iterable<Seat> readBooking(LocalDate eventDate){
-        return seatDAO.findAllByBooking_EventDate(eventDate);
+        return seatDAO.findAllByTicket_EventDate(eventDate);
     }
 }
