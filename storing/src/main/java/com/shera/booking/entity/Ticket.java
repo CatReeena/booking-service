@@ -18,14 +18,14 @@ public class Ticket {
     private Long id;
     @OneToOne
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
-    private Seat seatId;
+    private Seat seat;
     private Long phoneNumber;
-    private Date eventDate;
+    private LocalDate eventDate;
 
     public Ticket(){}
 
-    public Ticket(Seat seatId, Long phoneNumber) {
-        this.seatId = seatId;
+    public Ticket(Seat seat, Long phoneNumber) {
+        this.seat = seat;
         this.phoneNumber = phoneNumber;
     }
 }

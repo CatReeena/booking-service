@@ -16,7 +16,7 @@ public class ReadingService {
     @Autowired
     public final SeatDAO seatDAO;
 
-    public Iterable<Seat> readBooking(Date eventDate){
+    public Iterable<Seat> readBooking(LocalDate eventDate){
         return seatDAO.findAllByTicket_EventDate(eventDate);
     }
 }

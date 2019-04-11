@@ -21,7 +21,7 @@ public class ReadingController {
     public final ReadingService readingService;
 
     @GetMapping("/status")
-    public ResponseEntity<?> readSeatStatus(@RequestParam("date")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date eventDate){
+    public ResponseEntity<?> readSeatStatus(@RequestParam("date")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate eventDate){
         List<SeatDTO>  seatDTOlist = new ArrayList<>();
         readingService.readBooking(eventDate)
                 .forEach(seatBooking -> seatDTOlist.add(new SeatDTO(
