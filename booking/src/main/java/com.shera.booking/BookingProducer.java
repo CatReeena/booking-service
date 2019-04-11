@@ -16,8 +16,8 @@ public class BookingProducer {
 
     public void send(String topic, BookingRequest bookingRequest) {
         kafkaTemplate.send(topic, bookingRequest);
-        log.info("[Topic {}] Message sent: {}", topic, MessageFormat.format("{}, {}",
+        log.info("[Topic {}] Message sent: phone: {}, seat: {}", topic,
                 bookingRequest.getPhoneNumber(),
-                bookingRequest.getSeatId()));
+                bookingRequest.getSeatId());
     }
 }

@@ -20,7 +20,7 @@ public class Ticket {
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     private Seat seatId;
     private Long phoneNumber;
-    private LocalDate eventDate;
+    private Date eventDate;
 
     public Ticket(){}
 

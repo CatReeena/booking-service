@@ -15,7 +15,7 @@ public class StoringConsumer {
     @Autowired
     public final StoringService storingService;
 
-   // @KafkaListener(topics = "queue")
+    @KafkaListener(topics = "queue")
     public void receiveFirstTopic(ConsumerRecord<String, BookingRequest> record) {
         log.info("[Topic {}] | Received message: key - {}, value - {}", record.topic(), record.key(), record.value());
         BookingRequest bookingRequest = record.value();

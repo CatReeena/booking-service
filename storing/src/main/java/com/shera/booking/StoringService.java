@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @AllArgsConstructor
 public class StoringService {
@@ -14,11 +16,13 @@ public class StoringService {
     public final TicketDAO ticketDAO;
 
     public void storeBooking(BookingRequest bookingRequest){
-
+        Date d=  bookingRequest.getEventDate();
         Ticket ticket = ticketDAO.findFirstBySeatIdAndEventDate(bookingRequest.getSeatId(), bookingRequest.getEventDate());
         if(ticket != null){
-            ticket.setPhoneNumber(bookingRequest.getPhoneNumber());
-            ticketDAO.save(ticket);
+            if (ticket.getPhoneNumber()!=null){
+                ticket.setPhoneNumber(bookingRequest.getPhoneNumber());
+                ticketDAO.save(ticket);
+            }
         }
     }
 

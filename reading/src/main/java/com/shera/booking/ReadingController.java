@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class ReadingController {
     public final ReadingService readingService;
 
     @GetMapping("/status")
-    public ResponseEntity<?> readSeatStatus(@RequestParam("date")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate eventDate){
+    public ResponseEntity<?> readSeatStatus(@RequestParam("date")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date eventDate){
         List<SeatDTO>  seatDTOlist = new ArrayList<>();
         readingService.readBooking(eventDate)
                 .forEach(seatBooking -> seatDTOlist.add(new SeatDTO(
