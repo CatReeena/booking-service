@@ -21,11 +21,16 @@ public class StoringService {
     public final SeatDAO seatDAO;
 
     public void storeBooking(BookingRequest bookingRequest){
+
+//        seatDAO.save(new Seat());
+//        Iterable<Seat> fgg = seatDAO.findAll();
+
+
         Seat seat = seatDAO.findFirstById(bookingRequest.getSeatId());
         if(seat != null) {
             Ticket ticket = ticketDAO.findFirstBySeatAndEventDate(seat, bookingRequest.getEventDate());
             if (ticket != null) {
-                if (ticket.getPhoneNumber() != null) {
+                if (ticket.getPhoneNumber() == null) {
                     ticket.setPhoneNumber(bookingRequest.getPhoneNumber());
                     ticketDAO.save(ticket);
                 }
