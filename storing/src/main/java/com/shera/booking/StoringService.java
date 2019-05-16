@@ -22,10 +22,6 @@ public class StoringService {
 
     public void storeBooking(BookingRequest bookingRequest){
 
-//        seatDAO.save(new Seat());
-//        Iterable<Seat> fgg = seatDAO.findAll();
-
-
         Seat seat = seatDAO.findFirstById(bookingRequest.getSeatId());
         if(seat != null) {
             Ticket ticket = ticketDAO.findFirstBySeatAndEventDate(seat, bookingRequest.getEventDate());

@@ -6,16 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="booking" />
         <module name="reading" />
+        <module name="booking" />
         <module name="storing" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="booking" target="1.8" />
-      <module name="booking-service" target="1.8" />
-      <module name="reading" target="1.8" />
-      <module name="storing" target="1.8" />
-    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="booking" options="-parameters" />
+      <module name="reading" options="-parameters" />
+      <module name="storing" options="-parameters" />
+    </option>
   </component>
 </project>
