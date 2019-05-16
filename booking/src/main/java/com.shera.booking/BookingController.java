@@ -25,9 +25,8 @@ public class BookingController {
     @PostMapping("/booking")
     public ResponseEntity<?> tryToBook(@RequestBody BookingRequest bookingRequest){
 
-       bookingRequestRepository.save(bookingRequest); //Redis
-//        System.out.println(bookingRequestRepository.findById(bookingRequest.getId().toString()));
-        System.out.println(bookingRequestRepository.findAll());
+       //bookingRequestRepository.save(bookingRequest);
+        //System.out.println(bookingRequestRepository.findAll());
         bookingProducer.send("queue", bookingRequest);
         return ResponseEntity.ok().build();
     }
