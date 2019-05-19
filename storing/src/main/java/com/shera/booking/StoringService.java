@@ -19,6 +19,9 @@ import java.util.Date;
 public class StoringService {
 
     @Autowired
+    public final CacheClass cacheClass;
+
+    @Autowired
     public final TicketDAO ticketDAO;
 
     @Autowired
@@ -26,31 +29,23 @@ public class StoringService {
 
     public void storeBooking(BookingRequest bookingRequest){
 
+        cacheClass.findTicketById(1L);
+        cacheClass.findTicketById(1L);
+
         Seat seat = seatDAO.findFirstById(bookingRequest.getSeatId());
         if(seat != null) {
-            Ticket ticket = findTicket(seat, bookingRequest.getEventDate());
+            Ticket ticket = cacheClass.findTicket(seat, bookingRequest.getEventDate());
             if (ticket != null) {
                 if (ticket.getPhoneNumber() == null) {
                     ticket.setPhoneNumber(bookingRequest.getPhoneNumber());
-                    updateTicket(ticket);
+                    cacheClass.updateTicket(ticket);
                 }
             }
         }
     }
 
     //@Cacheable(value= "bookingCache", key= "{#seat.id, #date}")
-    @Cacheable(value= "bookingCache", key= "#seat.id")
-    public Ticket findTicket(Seat seat, LocalDate date){
-        System.out.println("Method findTicket called");
-        return ticketDAO.findFirstBySeatAndEventDate(seat, date);
-    }
 
-    //@CachePut(value= "bookingCache", key= "{#ticket.seat.id, ticket.eventDate}")
-    @CachePut(value= "bookingCache", key= "#ticket.seat.id")
-    public Ticket updateTicket(Ticket ticket){
-        System.out.println("Method updateTicket called");
-        return ticketDAO.save(ticket);
-    }
 
 
 }

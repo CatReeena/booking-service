@@ -20,22 +20,6 @@ import static org.springframework.data.redis.cache.RedisCacheConfiguration.defau
 @SpringBootApplication
 public class BookingApplication {
 
-	@Bean
-	JedisConnectionFactory jedisConnectionFactory(){
-		return new JedisConnectionFactory();
-	}
-
-	@Bean
-	RedisTemplate<String, BookingRequest> redisTemplate(){
-		RedisTemplate<String, BookingRequest> redisTemplate = new RedisTemplate<>();
-		redisTemplate.setConnectionFactory(jedisConnectionFactory());
-		return redisTemplate;
-	}
-
-	@Bean
-	public RedisCacheManager cacheManager() {
-		return RedisCacheManager.create(jedisConnectionFactory());
-	}
 
 //	@Bean
 //	public RedisCacheManager cacheManager() {
