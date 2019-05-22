@@ -2,6 +2,7 @@ package com.shera.booking;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +21,13 @@ public class ReadingController {
     @Autowired
     public final ReadingService readingService;
 
+
     @GetMapping("/status")
     public ResponseEntity<?> readSeatStatus(@RequestParam("date")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate eventDate){
-        List<SeatDTO>  seatDTOlist = new ArrayList<>();
-        readingService.readBooking(eventDate)
-                .forEach(seatBooking -> seatDTOlist.add(new SeatDTO(
-                        seatBooking.getId(),
-                        seatBooking.getTicket()!= null ? seatBooking.getTicket().getPhoneNumber() : null,
-                        seatBooking.getTicket().getPhoneNumber()!= null)));
 
+        List<SeatDTO> seatDTOlist = readingService.getSeatDTOList(eventDate);
         return ResponseEntity.ok().body(seatDTOlist);
     }
+
+
 }

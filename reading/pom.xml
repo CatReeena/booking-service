@@ -19,18 +19,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.shera.booking</groupId>-->
-            <!--<artifactId>storing</artifactId>-->
-            <!--<version>1.0-SNAPSHOT</version>-->
-            <!--<scope>compile</scope>-->
-            <!--&lt;!&ndash;<exclusions>&ndash;&gt;-->
-                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<groupId>com.h2database</groupId>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<artifactId>h2</artifactId>&ndash;&gt;-->
-                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
-            <!--&lt;!&ndash;</exclusions>&ndash;&gt;-->
-        <!--</dependency>-->
 
     </dependencies>
 

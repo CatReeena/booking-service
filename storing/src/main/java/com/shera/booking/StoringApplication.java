@@ -21,22 +21,6 @@ public class StoringApplication {
         SpringApplication.run(StoringApplication.class, args);
     }
 
-//    @Bean
-//    JedisConnectionFactory jedisConnectionFactory(){
-//        return new JedisConnectionFactory();
-//    }
-//
-//    @Bean
-//    RedisTemplate<String, BookingRequest> redisTemplate(){
-//        RedisTemplate<String, BookingRequest> redisTemplate = new RedisTemplate<>();
-//        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-//        return redisTemplate;
-//    }
-//
-//    @Bean
-//    public RedisCacheManager cacheManager() {
-//        return RedisCacheManager.create(jedisConnectionFactory());
-//    }
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server h2Server() throws SQLException {

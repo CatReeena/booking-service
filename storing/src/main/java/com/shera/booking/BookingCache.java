@@ -16,25 +16,19 @@ import java.time.LocalDate;
 
 @Service
 @AllArgsConstructor
-public class CacheClass {
+public class BookingCache {
 
     @Autowired
     public final TicketDAO ticketDAO;
 
 
-    @Cacheable(value= "bookingCache", key= "#seat.id")
+    @Cacheable(value= "bookingCache", key= "{#seat.id, #date}")
     public Ticket findTicket(Seat seat, LocalDate date){
         System.out.println("Method findTicket called");
         return ticketDAO.findFirstBySeatAndEventDate(seat, date);
     }
-    @Cacheable(value= "ticketCache", key= "#id")
-    public Ticket findTicketById(Long id){
-        System.out.println("hiiiiiiii");
-        return ticketDAO.findFirstBySeatId(id);
-    }
 
-    //@CachePut(value= "bookingCache", key= "{#ticket.seat.id, ticket.eventDate}")
-    @CachePut(value= "bookingCache", key= "#ticket.seat.id")
+    @CachePut(value= "bookingCache", key= "{#ticket.seat.id, #ticket.eventDate}")
     public Ticket updateTicket(Ticket ticket){
         System.out.println("Method updateTicket called");
         return ticketDAO.save(ticket);

@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 
 @AllArgsConstructor
 @Getter
 @Setter
-public class SeatDTO {
+public class SeatDTO implements Serializable {
 
     private Long seatId;
     private Long phoneNumber;
